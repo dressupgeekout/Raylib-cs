@@ -569,12 +569,12 @@ namespace Raylib_cs
         MOUSE_CURSOR_IBEAM = 2,
         MOUSE_CURSOR_CROSSHAIR = 3,
         MOUSE_CURSOR_POINTING_HAND = 4,
-        MOUSE_CURSOR_RESIZE_EW = 5,     // The horizontal resize/move arrow shape
-        MOUSE_CURSOR_RESIZE_NS = 6,     // The vertical resize/move arrow shape
-        MOUSE_CURSOR_RESIZE_NWSE = 7,     // The top-left to bottom-right diagonal resize/move arrow shape
-        MOUSE_CURSOR_RESIZE_NESW = 8,     // The top-right to bottom-left diagonal resize/move arrow shape
+        MOUSE_CURSOR_RESIZE_EW = 5,      // The horizontal resize/move arrow shape
+        MOUSE_CURSOR_RESIZE_NS = 6,      // The vertical resize/move arrow shape
+        MOUSE_CURSOR_RESIZE_NWSE = 7,    // The top-left to bottom-right diagonal resize/move arrow shape
+        MOUSE_CURSOR_RESIZE_NESW = 8,    // The top-right to bottom-left diagonal resize/move arrow shape
         MOUSE_CURSOR_RESIZE_ALL = 9,     // The omni-directional resize/move cursor shape
-        MOUSE_CURSOR_NOT_ALLOWED = 10     // The operation-not-allowed shape
+        MOUSE_CURSOR_NOT_ALLOWED = 10    // The operation-not-allowed shape
     }
 
     // Gamepad number
@@ -614,9 +614,9 @@ namespace Raylib_cs
         GAMEPAD_BUTTON_RIGHT_TRIGGER_2,
 
         // These are buttons in the center of the gamepad
-        GAMEPAD_BUTTON_MIDDLE_LEFT,     //PS3 Select
-        GAMEPAD_BUTTON_MIDDLE,          //PS Button/XBOX Button
-        GAMEPAD_BUTTON_MIDDLE_RIGHT,    //PS3 Start
+        GAMEPAD_BUTTON_MIDDLE_LEFT,     // PS3 Select
+        GAMEPAD_BUTTON_MIDDLE,          // PS Button/XBOX Button
+        GAMEPAD_BUTTON_MIDDLE_RIGHT,    // PS3 Start
 
         // These are the joystick press in buttons
         GAMEPAD_BUTTON_LEFT_THUMB,
@@ -689,7 +689,7 @@ namespace Raylib_cs
     // Material maps
     public enum MaterialMapType
     {
-        MAP_ALBEDO = 0,       // MAP_DIFFUSE
+        MAP_ALBEDO = 0,          // MAP_DIFFUSE
         MAP_METALNESS = 1,       // MAP_SPECULAR
         MAP_NORMAL = 2,
         MAP_ROUGHNESS = 3,
@@ -1173,6 +1173,14 @@ namespace Raylib_cs
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void TraceLog(TraceLogType logType, string text);
 
+        // Internal memory allocator
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr MemAlloc(int size);
+
+        // Internal memory free
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void MemFree(IntPtr ptr);
+
         // Takes a screenshot of current screen (saved a .png)
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void TakeScreenshot(string fileName);
@@ -1220,13 +1228,13 @@ namespace Raylib_cs
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int GetFileModTime(string fileName);
 
-        // Compress data (DEFLATE algorythm)
+        // Compress data (DEFLATE algorithm)
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte[] CompressData(ref byte[] data, int dataLength, ref int compDataLength);
+        public static extern IntPtr CompressData(byte[] data, int dataLength, ref int compDataLength);
 
-        // Decompress data (DEFLATE algorythm)
+        // Decompress data (DEFLATE algorithm)
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte[] DecompressData(ref byte[] compData, int compDataLength, ref int dataLength);
+        public static extern IntPtr DecompressData(byte[] compData, int compDataLength, ref int dataLength);
 
 
         // Persistent storage management
