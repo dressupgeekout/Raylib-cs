@@ -2166,46 +2166,11 @@ namespace Raylib_cs
 
         // Text formatting with variables (sprintf style)
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern string TextFormat(string text);
-
-        // Get a piece of a text string
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern string TextSubtext(string text, int position, int length);
-
-        // Append text at specific position and move cursor!
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void TextAppend(ref char text, string append, ref int position);
+        public static extern IntPtr TextFormat([MarshalAs(UnmanagedType.LPUTF8Str)] string text);
 
         // Get Pascal case notation version of provided string
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern string TextToPascal(string text);
-
-        // Get integer value from text (negative values not supported)
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int TextToInteger(string text);
-
-        // Encode text codepoint into utf8 text (memory must be freed!)
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern string TextToUtf8(string text, int length);
-
-
-        // UTF8 text strings management functions
-
-        // Get all codepoints in a string, codepoints count returned by parameters
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int[] GetCodepoints(string text, ref int count);
-
-        // Get total number of characters (codepoints) in a UTF8 encoded string
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int GetCodepointsCount(string text);
-
-        // Returns next codepoint in a UTF8 encoded string; 0x3f('?') is returned on failure
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int GetNextCodepoint(string text, ref int bytesProcessed);
-
-        // Encode codepoint into utf8 text (char array length returned as parameter)
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern string CodepointToUtf8(string text, ref int byteLength);
+        public static extern IntPtr TextToPascal([MarshalAs(UnmanagedType.LPUTF8Str)] string text);
 
         //------------------------------------------------------------------------------------
         // Basic 3d Shapes Drawing Functions (Module: models)
