@@ -6,7 +6,7 @@ using System.Security;
 namespace Raylib_cs
 {
     // Color type, RGBA (32bit)
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Color
     {
         public byte r;
@@ -66,7 +66,7 @@ namespace Raylib_cs
     }
 
     // Rectangle type
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Rectangle
     {
         public float x;
@@ -85,7 +85,7 @@ namespace Raylib_cs
 
     // Image type, bpp always RGBA (32bit)
     // NOTE: Data stored in CPU memory (RAM)
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Image
     {
         public IntPtr data;        // Image raw data (void *)
@@ -97,7 +97,7 @@ namespace Raylib_cs
 
     // Texture2D type
     // NOTE: Data stored in GPU memory
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Texture2D
     {
         public uint id;            // OpenGL texture id
@@ -108,7 +108,7 @@ namespace Raylib_cs
     }
 
     // RenderTexture2D type, for texture rendering
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct RenderTexture2D
     {
         public uint id;                  // OpenGL Framebuffer Object (FBO) id
@@ -117,7 +117,7 @@ namespace Raylib_cs
     }
 
     // N-Patch layout info
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct NPatchInfo
     {
         public Rectangle sourceRec;        // Region in the texture
@@ -129,7 +129,7 @@ namespace Raylib_cs
     }
 
     // Font character info
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct CharInfo
     {
         public int value;                  // Character value (Unicode)
@@ -140,7 +140,7 @@ namespace Raylib_cs
     }
 
     // Font type, includes texture and charSet array data
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Font
     {
         public int baseSize;             // Base size (default chars height)
@@ -152,7 +152,7 @@ namespace Raylib_cs
     }
 
     // Camera type, defines a camera position/orientation in 3d space
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Camera3D
     {
         public Vector3 position;        // Camera position
@@ -172,7 +172,7 @@ namespace Raylib_cs
     }
 
     // Camera2D type, defines a 2d camera
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Camera2D
     {
         public Vector2 offset;        // Camera offset (displacement from target)
@@ -191,7 +191,7 @@ namespace Raylib_cs
 
     // Vertex data definning a mesh
     // NOTE: Data stored in CPU memory (and GPU)
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Mesh
     {
         public int vertexCount;                    // Number of vertices stored in arrays
@@ -218,7 +218,7 @@ namespace Raylib_cs
     }
 
     // Shader type (generic)
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Shader
     {
         public uint id;            // Shader program id
@@ -226,7 +226,7 @@ namespace Raylib_cs
     }
 
     // Material texture map
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct MaterialMap
     {
         public Texture2D texture;        // Material map texture
@@ -235,7 +235,7 @@ namespace Raylib_cs
     }
 
     // Material type (generic)
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Material
     {
         public Shader shader;             // Material shader
@@ -244,7 +244,7 @@ namespace Raylib_cs
     }
 
     // Transformation properties
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Transform
     {
         public Vector3 translation;        // Translation
@@ -253,7 +253,7 @@ namespace Raylib_cs
     }
 
     // Bone information
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct BoneInfo
     {
         public IntPtr name;                // Bone name (char [32])
@@ -261,7 +261,7 @@ namespace Raylib_cs
     }
 
     // Model type
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Model
     {
         public Matrix4x4 transform;        // Local transform matrix
@@ -276,7 +276,7 @@ namespace Raylib_cs
     }
 
     // Model animation
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct ModelAnimation
     {
         public int boneCount;              // Number of bones
@@ -286,7 +286,7 @@ namespace Raylib_cs
     }
 
     // Ray type (useful for raycast)
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Ray
     {
         public Vector3 position;         // Ray position (origin)
@@ -300,7 +300,7 @@ namespace Raylib_cs
     }
 
     // Raycast hit information
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct RayHitInfo
     {
         public byte hit;                // Did the ray hit something?
@@ -310,7 +310,7 @@ namespace Raylib_cs
     }
 
     // Bounding box type
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct BoundingBox
     {
         public Vector3 min;        // Minimum vertex box-corner
@@ -324,7 +324,7 @@ namespace Raylib_cs
     }
 
     // Wave type, defines audio wave data
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Wave
     {
         public uint sampleCount;        // Number of samples
@@ -336,7 +336,7 @@ namespace Raylib_cs
 
     // Audio stream type
     // NOTE: Useful to create custom audio streams not bound to a specific file
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct AudioStream
     {
         public IntPtr audioBuffer;     // Pointer to internal data(rAudioBuffer *) used by the audio system
@@ -346,7 +346,7 @@ namespace Raylib_cs
     }
 
     // Sound source type
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Sound
     {
         public AudioStream stream;        // Audio stream
@@ -355,7 +355,7 @@ namespace Raylib_cs
 
     // Music stream type (audio file streaming from memory)
     // NOTE: Anything longer than ~10 seconds should be streamed
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Music
     {
         public AudioStream stream;        // Audio stream
@@ -366,7 +366,7 @@ namespace Raylib_cs
     }
 
     // Head-Mounted-Display device parameters
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential)]
     public unsafe struct VrDeviceInfo
     {
         public int hResolution;                                         // HMD horizontal resolution in pixels
@@ -1197,7 +1197,8 @@ namespace Raylib_cs
 
         // Save data to file from byte array (write)
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SaveFileData(string fileName, IntPtr data, int bytesToWrite);
+        [return: MarshalAs(UnmanagedType.I1)]
+        public static extern bool SaveFileData(string fileName, IntPtr data, int bytesToWrite);
 
         // Check file extension
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
@@ -2272,8 +2273,9 @@ namespace Raylib_cs
         // Mesh loading/unloading functions
 
         // Load meshes from model file
+        // IntPtr refers to a Mesh *
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Mesh[] LoadMeshes(string fileName, ref int meshCount);
+        public static extern IntPtr LoadMeshes(string fileName, ref int meshCount);
 
         // Unload mesh from memory (RAM and/or VRAM)
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
@@ -2287,8 +2289,9 @@ namespace Raylib_cs
         // Material loading/unloading functions
 
         // Load materials from model file
+        // IntPtr refers to Material *
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Material[] LoadMaterials(string fileName, ref int materialCount);
+        public static extern IntPtr LoadMaterials(string fileName, ref int materialCount);
 
         // Load default material (Supports: DIFFUSE, SPECULAR, NORMAL maps)
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]

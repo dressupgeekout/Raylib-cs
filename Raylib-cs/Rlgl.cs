@@ -352,8 +352,9 @@ namespace Raylib_cs
         public static extern IntPtr rlReadTexturePixels(Texture2D texture);
 
         // Read screen pixel data (color buffer)
+        // IntPtr refers to a unsigned char *
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte[] rlReadScreenPixels(int width, int height);
+        public static extern IntPtr rlReadScreenPixels(int width, int height);
 
 
         // Framebuffer management (fbo)
