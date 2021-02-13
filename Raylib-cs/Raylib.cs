@@ -256,9 +256,8 @@ namespace Raylib_cs
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     public struct BoneInfo
     {
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
-        public char[] name;        // Bone name
-        public int parent;         // Bone parent
+        public IntPtr name;                // Bone name (char [32])
+        public int parent;                 // Bone parent
     }
 
     // Model type
@@ -304,8 +303,7 @@ namespace Raylib_cs
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     public struct RayHitInfo
     {
-        [MarshalAs(UnmanagedType.I1)]
-        public bool hit;                // Did the ray hit something?
+        public byte hit;                // Did the ray hit something?
         public float distance;          // Distance to nearest hit
         public Vector3 position;        // Position of nearest hit
         public Vector3 normal;          // Surface normal of hit
@@ -362,15 +360,14 @@ namespace Raylib_cs
     {
         public AudioStream stream;        // Audio stream
         public uint sampleCount;          // Total number of samples
-        [MarshalAs(UnmanagedType.I1)]
-        public bool looping;              // Music looping enable
+        public byte looping;              // Music looping enable
         public int ctxType;               // Type of music context (audio filetype)
         public IntPtr ctxData;            // Audio context data, depends on type (void *)
     }
 
     // Head-Mounted-Display device parameters
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct VrDeviceInfo
+    public unsafe struct VrDeviceInfo
     {
         public int hResolution;                                         // HMD horizontal resolution in pixels
         public int vResolution;                                         // HMD vertical resolution in pixels
@@ -380,12 +377,8 @@ namespace Raylib_cs
         public float eyeToScreenDistance;                               // HMD distance between eye and display in meters
         public float lensSeparationDistance;                            // HMD lens separation distance in meters
         public float interpupillaryDistance;                            // HMD IPD (distance between pupils) in meters
-
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        public float[] lensDistortionValues;                            // HMD lens distortion constant parameters
-
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        public float[] chromaAbCorrection;                              // HMD chromatic aberration correction parameters
+        public fixed float lensDistortionValues[4];                     // HMD lens distortion constant parameters
+        public fixed float chromaAbCorrection[4];                       // HMD chromatic aberration correction parameters
     }
 
     // ----------------------------------------------------------------------------------
